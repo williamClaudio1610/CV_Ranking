@@ -12,7 +12,6 @@ namespace CV_Ranking.Services
 		{
 			_mlContext = new MLContext(seed: 0);
 		}
-
 		public List<(int candidateId, float score)> CalculateMatches(string jobDescription, List<(int id, string text)> candidates)
 		{
 			if (candidates.Count == 0)
