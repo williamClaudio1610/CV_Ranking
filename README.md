@@ -196,20 +196,8 @@ Principais pastas e responsabilidades:
   Entidades e DTOs
   (`Vaga.cs`, `CandidatoCV.cs`, `ResultadoMatching.cs`)
 
-* Arquivos de configuração e bootstrap:
+* Arquivos de configuração:
   `Program.cs`, `appsettings.json`, `Dockerfile`, `launchSettings.json`
-
----
-
-## Boas práticas e contribuições
-
-* Uma branch por feature ou correção:
-  `feature/nome-descritivo`
-* Respeite o padrão de código definido em `.editorconfig`.
-* Inclua **testes automatizados** sempre que fizer sentido.
-* Pull Requests devem ser claros, objetivos e, de preferência, vinculados a issues.
-
-Código sem teste não é feature pronta.
 
 ---
 
@@ -225,8 +213,6 @@ Código sem teste não é feature pronta.
   `Services/NormalizarTexto.cs`.
 * Extração de texto de PDFs é feita em
   `Services/PdfTextExtractor.cs`.
-
-Não há “IA mágica” aqui — é matemática aplicada de forma objetiva e explicável.
 
 ---
 
