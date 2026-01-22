@@ -3,16 +3,13 @@
 
 # CV_Ranking — Mini-lab de ranqueamento de currículos
 
-Este projeto é um **laboratório prático** para experimentar técnicas de *matching* entre **descrições de vaga** e **currículos**, usando **ML.NET** com featurização **TF-IDF** e **similaridade de cosseno**.
+Este projeto é um **laboratório prático** para experimentar técnicas de *matching* entre **descrições de vaga** e **currículos**, usando **ML.NET** com auxílio de **TF-IDF** e **similaridade de cosseno**.
 
 Na prática, a aplicação:
 
 * extrai texto de currículos em PDF,
 * normaliza e prepara os textos,
 * e expõe uma **API REST** para cadastrar candidatos e calcular o ranking de aderência de cada CV a uma vaga.
-
-A ideia não é “substituir RH”, mas **automatizar a triagem inicial** de forma objetiva e reproduzível.
-
 ---
 
 ## Tecnologias utilizadas
