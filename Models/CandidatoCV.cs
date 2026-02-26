@@ -1,9 +1,11 @@
-﻿namespace CV_Ranking.Models
+namespace CV_Ranking.Models
 {
 	public class CandidatoCV
 	{
 		public int Id { get; set; }
 		public string NomeFicheiro { get; set; } = string.Empty;
+	/// <summary>Caminho relativo do ficheiro em wwwroot (ex: cvs/xxx.pdf)</summary>
+	public string CaminhoFicheiro { get; set; } = string.Empty;
 		public string RawText { get; set; } = string.Empty;
 		public string NormalizedText { get; set; } = string.Empty;
 		public DateTime UploadedAt { get; set; } = DateTime.UtcNow;

@@ -20,7 +20,6 @@ namespace CV_Ranking.Services
 			// Remover múltiplos espaços
 			texto = Regex.Replace(texto, @"\s+", " ");
 
-			// Remover espaços no início e fim
 			texto = texto.Trim();
 
 			// Remover stop words comuns (simplificado)

@@ -1,4 +1,4 @@
-﻿using CV_Ranking.Models;
+using CV_Ranking.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CVMatching.Infrastructure.Data;
@@ -24,6 +24,7 @@ public class AppDbContext : DbContext
 		{
 			entity.HasKey(e => e.Id);
 			entity.Property(e => e.NomeFicheiro).IsRequired().HasMaxLength(255);
+			entity.Property(e => e.CaminhoFicheiro).IsRequired().HasMaxLength(500);
 			entity.HasOne(e => e.Vaga)
 				  .WithMany(j => j.Candidatos)
 				  .HasForeignKey(e => e.VagaID)

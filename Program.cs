@@ -21,13 +21,39 @@ builder.Services.AddSwaggerGen(c =>
 	});
 });
 
-// Database - usando SQLite para MVP (troque para PostgreSQL em produção)
+// Database - PostgreSQL
 builder.Services.AddDbContext<AppDbContext>(options =>
-	options.UseSqlite(
-		builder.Configuration.GetConnectionString("DefaultConnection")
-		?? "Data Source=cvmatching.db"
+	options.UseNpgsql(
+		builder.Configuration.GetConnectionString("PostgreSQL")
 	)
 );
+
+//CONFIGURA??O CORS PARA FRONTEND SEPARADO
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("AllowFrontend", policy =>
+	{
+		policy.WithOrigins(
+			"http://localhost:3000",      // Se usar Live Server padr?o
+			"http://localhost:5500",      // VS Code Live Server
+			"http://127.0.0.1:3000",
+			"http://127.0.0.1:5500",
+			"http://localhost:8080",      // Outras portas comuns
+			"file://"                      // Abrir HTML direto no navegador
+		)
+		.AllowAnyMethod()
+		.AllowAnyHeader()
+		.AllowCredentials();
+	});
+
+	// Permitir qualquer origem
+	options.AddPolicy("AllowAll", policy =>
+	{
+		policy.AllowAnyOrigin()
+			  .AllowAnyMethod()
+			  .AllowAnyHeader();
+	});
+});
 
 // Repositories
 builder.Services.AddScoped<IVagaRepository, VagaRepository>();
@@ -52,6 +78,11 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// Criar pasta para CVs em wwwroot/cvs
+var cvFolder = app.Configuration["CvStorage:Folder"] ?? "wwwroot/cvs";
+var cvFullPath = Path.Combine(app.Environment.ContentRootPath, cvFolder);
+Directory.CreateDirectory(cvFullPath);
+
 // Criar banco de dados automaticamente
 using (var scope = app.Services.CreateScope())
 {
@@ -74,5 +105,11 @@ app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+
+// Habilitar arquivos est?ticos
+app.UseStaticFiles();
+
+// Rota padr?o para index.html
+app.MapGet("/", () => Results.Redirect("/index.html"));
 
 app.Run();

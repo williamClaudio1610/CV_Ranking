@@ -20,7 +20,7 @@ namespace CV_Ranking.Services
 			// Preparar dados para processamento
 			var allTexts = new List<TextData>
 		{
-			new TextData { Id = -1, Text = jobDescription } // Job como referência
+			new TextData { Id = -1, Text = jobDescription } // Descrição de Vaga para referencia de análise
         };
 
 			allTexts.AddRange(candidates.Select(c => new TextData { Id = c.id, Text = c.text }));
