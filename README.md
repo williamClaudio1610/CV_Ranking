@@ -3,16 +3,13 @@
 
 # CV_Ranking — Mini-lab de ranqueamento de currículos
 
-Este projeto é um **laboratório prático** para experimentar técnicas de *matching* entre **descrições de vaga** e **currículos**, usando **ML.NET** com featurização **TF-IDF** e **similaridade de cosseno**.
+Este projeto é um **laboratório prático** para experimentar técnicas de *matching* entre **descrições de vaga** e **currículos**, usando **ML.NET** com auxílio de **TF-IDF** e **similaridade de cosseno**.
 
 Na prática, a aplicação:
 
 * extrai texto de currículos em PDF,
 * normaliza e prepara os textos,
 * e expõe uma **API REST** para cadastrar candidatos e calcular o ranking de aderência de cada CV a uma vaga.
-
-A ideia não é “substituir RH”, mas **automatizar a triagem inicial** de forma objetiva e reproduzível.
-
 ---
 
 ## Tecnologias utilizadas
@@ -196,20 +193,8 @@ Principais pastas e responsabilidades:
   Entidades e DTOs
   (`Vaga.cs`, `CandidatoCV.cs`, `ResultadoMatching.cs`)
 
-* Arquivos de configuração e bootstrap:
+* Arquivos de configuração:
   `Program.cs`, `appsettings.json`, `Dockerfile`, `launchSettings.json`
-
----
-
-## Boas práticas e contribuições
-
-* Uma branch por feature ou correção:
-  `feature/nome-descritivo`
-* Respeite o padrão de código definido em `.editorconfig`.
-* Inclua **testes automatizados** sempre que fizer sentido.
-* Pull Requests devem ser claros, objetivos e, de preferência, vinculados a issues.
-
-Código sem teste não é feature pronta.
 
 ---
 
@@ -225,8 +210,6 @@ Código sem teste não é feature pronta.
   `Services/NormalizarTexto.cs`.
 * Extração de texto de PDFs é feita em
   `Services/PdfTextExtractor.cs`.
-
-Não há “IA mágica” aqui — é matemática aplicada de forma objetiva e explicável.
 
 ---
 
